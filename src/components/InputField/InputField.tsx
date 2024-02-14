@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { ItemTitle } from "../ItemTitle/ItemTitle";
 
 type PropsType = {
   title: string;
@@ -10,7 +11,7 @@ export const InputField = (props: PropsType) => {
   const { title, inputType, onChange } = props;
   return (
     <div>
-      <p className="font-bold">{title}</p>
+      <ItemTitle title={title} />
       <input
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           onChange(e.currentTarget.value)

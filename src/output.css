@@ -560,6 +560,10 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -578,6 +582,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .gap-2 {

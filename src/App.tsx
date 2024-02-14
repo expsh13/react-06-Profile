@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { InputField } from "./components/InputField/InputField";
+import { ImageUpload } from "./components/ImageUpload/ImageUpload";
 
 export const App = () => {
   const [name, setName] = useState("");
@@ -7,9 +8,9 @@ export const App = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
-    <div className="w-1/2 m-auto">
+    <div className="grid w-1/2 m-auto gap-2.5">
       <h1 className="font-bold text-center">プロフィール生成</h1>
-      <div className="flex gap-2.5">
+      <div className="flex justify-center gap-2.5 w-full m-auto">
         <div className="w-2/5 flex flex-col gap-2">
           <InputField
             title="名前"
@@ -26,6 +27,7 @@ export const App = () => {
             inputType="text"
             onChange={(number: string) => setPhoneNumber(number)}
           />
+          <ImageUpload title="プロフィール写真" />
           <button className="bg-green-500 text-gray-50 p-1 rounded font-bold">
             ダウンロード
           </button>

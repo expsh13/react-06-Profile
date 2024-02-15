@@ -2,19 +2,15 @@ import { ChangeEvent, useState } from "react";
 import { InputField } from "./components/InputField/InputField";
 import { ImageUpload } from "./components/ImageUpload/ImageUpload";
 
-const getImgUrl = (img: File | null) => {
-  if (!img) return;
-};
-
 export const App = () => {
   const [name, setName] = useState("");
   const [birthDay, setBirthDay] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [img, setImg] = useState<File | null>(null);
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files && e.currentTarget.files[0]) {
-      setImg(e.currentTarget.files[0]);
+      setImgUrl(URL.createObjectURL(e.currentTarget.files[0]));
     }
   };
 
@@ -39,12 +35,12 @@ export const App = () => {
             onChange={(number: string) => setPhoneNumber(number)}
           />
           <ImageUpload title="プロフィール写真" onChange={handleFileChange} />
-          <button className="bg-green-500 text-gray-50 p-1 rounded font-bold">
+          <button className="bg-green-500 text-gray-50 p-1 rounded font-bold hover:opacity-80">
             ダウンロード
           </button>
         </div>
-        <div className="flex flex-col items-center w-2/5 rounded shadow border-gray-400 border p-2">
-          {img && <div>{img}</div>}
+        <div className="flex flex-col items-center gap-1 w-2/5 rounded shadow border-gray-400 border p-2">
+          {imgUrl && <img src={imgUrl} />}
           <p>{name}</p>
           <p>{birthDay}</p>
           <p>{phoneNumber}</p>
